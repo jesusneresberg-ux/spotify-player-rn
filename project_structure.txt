@@ -1,0 +1,149 @@
+spotify-player-rn/
+│
+├── app/                              # Expo Router
+│   ├── (auth)/
+│   │   ├── login.tsx
+│   │   ├── callback.tsx
+│   │   └── splash.tsx
+│   ├── (tabs)/
+│   │   ├── _layout.tsx              # Tab navigation
+│   │   ├── player.tsx               # Main player screen
+│   │   ├── queue.tsx                # Queue manager
+│   │   ├── library.tsx              # User library
+│   │   └── search.tsx               # Search tracks
+│   ├── _layout.tsx
+│   └── +not-found.tsx
+│
+├── src/
+│   ├── core/                         # Core business logic
+│   │   ├── audio/
+│   │   │   ├── types.ts              # Interfaces do player
+│   │   │   ├── AudioPlayer.ts        # Abstract class
+│   │   │   ├── SpotifyPlayer.ts      # Implementação Spotify
+│   │   │   ├── LocalPlayer.ts        # Implementação local
+│   │   │   └── PlayerController.ts   # Orquestrador
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── types.ts
+│   │   │   ├── SpotifyAuth.ts        # OAuth PKCE
+│   │   │   ├── TokenManager.ts       # Tokens (access/refresh)
+│   │   │   └── SecureStore.ts        # Armazenamento seguro
+│   │   │
+│   │   ├── api/
+│   │   │   ├── client.ts             # Axios instance
+│   │   │   ├── spotify.ts            # Spotify endpoints
+│   │   │   ├── interceptors.ts       # Auth headers + retry
+│   │   │   └── types.ts              # Response types
+│   │   │
+│   │   ├── storage/
+│   │   │   ├── LocalStorage.ts       # AsyncStorage wrapper
+│   │   │   ├── FileStorage.ts        # Para áudio local
+│   │   │   └── CacheManager.ts       # Cache de metadata
+│   │   │
+│   │   └── queue/
+│   │       ├── types.ts
+│   │       ├── QueueManager.ts       # Fila + shuffle/repeat
+│   │       └── QueueUtils.ts         # Algoritmos
+│   │
+│   ├── stores/                       # Zustand (state management)
+│   │   ├── playerStore.ts            # Estado do player
+│   │   ├── queueStore.ts             # Estado da fila
+│   │   ├── authStore.ts              # Estado de auth
+│   │   ├── searchStore.ts            # Estado de busca
+│   │   └── libraryStore.ts           # Biblioteca do usuário
+│   │
+│   ├── ui/                           # Componentes React Native
+│   │   ├── components/
+│   │   │   ├── NowPlayingCard.tsx     # Card com track atual
+│   │   │   ├── PlayerControls.tsx     # Play/pause/next/prev
+│   │   │   ├── ProgressBar.tsx        # Barra de progresso
+│   │   │   ├── VolumeControl.tsx      # Slider de volume
+│   │   │   ├── ModeButtons.tsx        # Shuffle/Repeat
+│   │   │   ├── QueueItem.tsx          # Item da fila
+│   │   │   ├── TrackItem.tsx          # Item de track
+│   │   │   ├── PlaylistCard.tsx       # Card de playlist
+│   │   │   ├── SearchBar.tsx          # Campo de busca
+│   │   │   ├── ArtworkImage.tsx       # Com loading/fallback
+│   │   │   └── MiniPlayer.tsx         # Reprodutor reduzido
+│   │   │
+│   │   ├── screens/
+│   │   │   ├── PlayerScreen.tsx       # Full player
+│   │   │   ├── QueueScreen.tsx        # Gerenciador de fila
+│   │   │   ├── LibraryScreen.tsx      # Biblioteca
+│   │   │   ├── SearchScreen.tsx       # Busca
+│   │   │   ├── LoginScreen.tsx        # Autenticação
+│   │   │   └── SplashScreen.tsx       # Loading inicial
+│   │   │
+│   │   ├── theme.ts                  # Cores, tipografia
+│   │   ├── spacing.ts                # Espaçamentos
+│   │   └── icons.ts                  # Ícones
+│   │
+│   ├── hooks/                        # Custom hooks
+│   │   ├── usePlayer.ts              # Acesso ao player
+│   │   ├── useQueue.ts               # Acesso à fila
+│   │   ├── useAuth.ts                # Acesso a autenticação
+│   │   ├── usePlayback.ts            # Sincronização com Spotify
+│   │   └── useLocalFiles.ts          # Acesso a arquivos locais
+│   │
+│   ├── services/                     # Serviços auxiliares
+│   │   ├── LoggerService.ts          # Logging
+│   │   ├── NotificationService.ts    # Notificações
+│   │   ├── AnalyticsService.ts       # Rastreamento
+│   │   ├── MusicMetadataService.ts   # ID3 tags
+│   │   └── NetworkService.ts         # Verificar conexão
+│   │
+│   ├── utils/
+│   │   ├── formatters.ts             # Formatar tempo, etc
+│   │   ├── validators.ts             # Validações
+│   │   ├── crypto.ts                 # PKCE, hashing
+│   │   ├── constants.ts              # Constantes globais
+│   │   └── helpers.ts                # Funções auxiliares
+│   │
+│   └── types/
+│       ├── index.ts
+│       ├── spotify.ts                # Types da API
+│       ├── player.ts                 # Types do player
+│       ├── queue.ts                  # Types da fila
+│       └── auth.ts                   # Types de auth
+│
+├── assets/
+│   ├── icons/
+│   │   ├── play.svg
+│   │   ├── pause.svg
+│   │   ├── next.svg
+│   │   ├── prev.svg
+│   │   ├── shuffle.svg
+│   │   ├── repeat.svg
+│   │   └── ...
+│   ├── images/
+│   │   ├── spotify-logo.png
+│   │   ├── placeholder-album.png
+│   │   └── gradient-bg.png
+│   └── fonts/
+│       ├── Spotify-Bold.ttf
+│       ├── Spotify-Medium.ttf
+│       └── Spotify-Regular.ttf
+│
+├── config/
+│   ├── spotify.config.ts             # Client ID, redirect URI
+│   ├── constants.ts                  # Valores mágicos
+│   └── env.example.ts                # Template variáveis
+│
+├── __tests__/
+│   ├── core/
+│   │   ├── audio.test.ts
+│   │   ├── queue.test.ts
+│   │   └── auth.test.ts
+│   ├── ui/
+│   │   └── components.test.tsx
+│   └── utils/
+│       └── formatters.test.ts
+│
+├── app.json                          # Configuração Expo
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+├── .eslintrc.js
+├── .env.example
+├── .gitignore
+└── README.md

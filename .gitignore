@@ -1,0 +1,80 @@
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.eslintcache
+.yarn-integrity
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-workspace
+
+# Testing
+.nyc_output/
+coverage/
+.jest_cache/
+
+# Build
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Security
+*.pem
+*.key
+*.jks
+secrets.json
+.env.*
+
+# Project specific
+app/
+lib/
+/build
+/eas.json
+/app.json (versionado, mas pode ignorar localmente)
+
+# Temporary
+*.tmp
+temp/
+tmp/
