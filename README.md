@@ -2,6 +2,12 @@
 
 Full-featured Spotify player implementation for React Native using Expo, featuring complete playback control, queue management, and seamless integration with Spotify Web API.
 
+## 📦 Download APK
+
+**[📲 Download Latest APK](https://github.com/jesusneresberg-ux/spotify-player-rn/releases)** | **[📖 Installation Guide](docs/APK_DOWNLOAD.md)**
+
+The APK is automatically built via GitHub Actions on every release. See the [APK_DOWNLOAD.md](docs/APK_DOWNLOAD.md) guide for installation instructions and troubleshooting.
+
 ## ✨ Features
 
 ### 🎮 Player Controls
