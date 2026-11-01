@@ -1,139 +1,155 @@
-# 📱 APK Download - Spotify Player
+# 📦 Link do APK - Spotify Player RN
 
-## 🚀 Link Direto
+## 🚀 Como Baixar o APK Agora
 
-**https://github.com/jesusneresberg-ux/spotify-player-rn/releases/tag/v1.0.0**
+**📍 Link da Release:** https://github.com/jesusneresberg-ux/spotify-player-rn/releases/tag/v1.0.0
 
-⚠️ **Atenção:** O APK ainda está sendo gerado automaticamente pelo GitHub Actions. 
-
-Se o link acima não mostrar o APK ainda, aguarde alguns minutos enquanto o workflow completa a build.
+⚠️ **Status Atual:** O workflow de build automático está com problemas técnicos no GitHub Actions. O APK ainda não está disponível automaticamente.
 
 ---
 
-## 📦 Status da Build
+## 🔧 Soluções Alternativas
 
-Você pode acompanhar o progresso em tempo real:
+### ✅ Opção 1: Build Local (Recomendado)
 
-**https://github.com/jesusneresberg-ux/spotify-player-rn/actions**
+Clone o repositório e faça build localmente:
 
-Tempo estimado: 5-8 minutos
+\`\`\`bash
+# 1. Clone o repo
+git clone https://github.com/jesusneresberg-ux/spotify-player-rn.git
+cd spotify-player-rn
 
----
+# 2. Instale dependências
+npm install
 
-## 📥 Como Baixar
+# 3. Build para Android
+npx expo run:android --variant release
 
-### Opção 1: Via Release (Quando disponível)
+# O APK estará em: android/app/build/outputs/apk/release/app-release.apk
+\`\`\`
 
-1. Acesse: https://github.com/jesusneresberg-ux/spotify-player-rn/releases/tag/v1.0.0
-2. Role até "Assets"
-3. Clique no arquivo `.apk`
-4. O download começará automaticamente
-
-### Opção 2: Via Artifacts (Disponível agora)
-
-1. Vá em: https://github.com/jesusneresberg-ux/spotify-player-rn/actions
-2. Clique no workflow run mais recente com ✅ (verde)
-3. Role até "Artifacts" no final da página
-4. Clique em **spotify-player-apk**
-5. Um arquivo ZIP será baixado
-6. Extraia o `.apk` do ZIP
+**Requisitos:**
+- Node.js 18+
+- Java 17
+- Android SDK
+- Android Studio (ou CLI tools)
 
 ---
 
-## 📋 Instalação no Android
+### ✅ Opção 2: EAS Build (Expo Cloud)
 
-1. **Baixe o APK** usando uma das opções acima
-2. **Habilite instalação de fontes desconhecidas:**
-   - Vá em **Configurações → Segurança**
-   - Habilite **Instalar apps desconhecidos** (Android 8+)
-   - Ou **Fontes desconhecidas** (Android 7-)
-3. **Toque no arquivo APK baixado**
-4. **Siga as instruções de instalação**
-5. **Abra o app Spotify Player**
+\`\`\`bash
+# 1. Clone o repo
+git clone https://github.com/jesusneresberg-ux/spotify-player-rn.git
+cd spotify-player-rn
 
----
+# 2. Instale dependências e EAS
+npm install
+npm install -g eas-cli
 
-## 🔑 Configuração Inicial
+# 3. Login no Expo
+eas login
 
-Após instalar, você tem duas opções:
+# 4. Build APK
+eas build --platform android --profile preview
+\`\`\`
 
-### Opção A: Usar Spotify (Recomendado)
-
-1. Você precisa configurar credenciais do Spotify
-2. Siga o guia: [docs/APK_DOWNLOAD.md](https://github.com/jesusneresberg-ux/spotify-player-rn/blob/main/docs/APK_DOWNLOAD.md#-configurar-credenciais-spotify)
-3. Faça login e aproveite o streaming
-
-### Opção B: Apenas Arquivos Locais
-
-1. Abra o app
-2. Toque em "Skip Login" ou "Use Local Files Only"
-3. Selecione músicas do seu dispositivo
+O EAS gerará o APK na nuvem e te enviará um link para download.
 
 ---
 
-## ✨ Funcionalidades
+### ✅ Opção 3: Usar Expo Go (Sem build)
 
-- 🎮 Controles completos (Play, Pause, Skip, Seek)
-- 📋 Gerenciamento de fila
-- 🔀 Modo Shuffle (algoritmo Fisher-Yates)
-- 🔁 Modos Repeat (Off/All/One)
-- 🔐 OAuth 2.0 Spotify (PKCE)
-- 📱 Suporte a arquivos locais
-- 🔊 Controle de volume
-- ⏱️ Tracking de progresso em tempo real
+Para testar o app sem fazer build:
 
----
+\`\`\`bash
+# 1. Clone e instale
+git clone https://github.com/jesusneresberg-ux/spotify-player-rn.git
+cd spotify-player-rn
+npm install
 
-## 📱 Requisitos
+# 2. Inicie o servidor
+npx expo start
 
-- **Android:** 5.0 (Lollipop) ou superior
-- **Espaço:** ~50 MB
-- **Arquitetura:** ARM64, ARMv7, x86, x86_64
-- **Internet:** Para streaming Spotify (opcional para locais)
+# 3. Escaneie o QR Code com o app Expo Go (Android/iOS)
+# Download: https://expo.dev/go
+\`\`\`
 
----
-
-## 🔧 Problemas Comuns
-
-### "Aplicativo não instalado"
-
-**Solução:** Habilite "Fontes desconhecidas" nas configurações
-
-### "Spotify não está tocando"
-
-**Solução:** Configure suas credenciais do Spotify (veja seção acima)
-
-### "App fecha ao abrir"
-
-**Solução:** Certifique-se de que baixou a versão correta (ARM64 para maioria dos devices)
+⚠️ **Limitação:** Funcionalidades nativas podem não funcionar no Expo Go.
 
 ---
 
-## 🆘 Suporte
+## 📋 Problema com GitHub Actions
 
-Encontrou um problema? Abra uma issue:
+O workflow está falhando em:
+- **Setup Node.js v4** - Problema de compatibilidade
+- **expo prebuild** - Requer instalação global do Expo CLI
+
+**Correções tentadas:**
+- ✅ Downgrade para Node 18
+- ✅ Downgrade ações para v3
+- ✅ Instalação global do Expo CLI
+- ⏳ Workflow ainda precisa de ajustes
+
+---
+
+## 📱 Quando o APK Estará Disponível?
+
+Estou trabalhando em corrigir o workflow. Opções:
+
+1. **Usar um serviço de CI/CD diferente** (AppCenter, Bitrise, CircleCI)
+2. **Build manual e upload** direto na Release
+3. **Configurar EAS Build** no GitHub Actions
+
+---
+
+## 🆘 Precisa do APK Urgente?
+
+Se você precisa testar agora:
+
+1. **Clone o repo** localmente
+2. **Siga a Opção 1** (Build Local) acima
+3. Ou use **Expo Go** (Opção 3) para testar sem build
+
+---
+
+## 📖 Documentação Completa
+
+- [Setup Guide](https://github.com/jesusneresberg-ux/spotify-player-rn/blob/main/SETUP_GUIDE.md)
+- [Build Guide](https://github.com/jesusneresberg-ux/spotify-player-rn/blob/main/docs/BUILD_APK_GUIDE.md)
+- [APK Installation Guide](https://github.com/jesusneresberg-ux/spotify-player-rn/blob/main/docs/APK_DOWNLOAD.md)
+
+---
+
+## 💡 Por Que Não Usar um APK Pre-Compilado?
+
+Builds automatizados garantem:
+- ✅ Código sempre atualizado
+- ✅ Build reproduzível
+- ✅ Sem APKs modificados/maliciosos
+- ✅ Transparência total
+
+Prefiro resolver o workflow do que subir um APK manual que pode ficar desatualizado.
+
+---
+
+## 🔔 Atualizações
+
+⭐ **Star o repo** para receber notificações quando o APK estiver disponível!
+
+Assim que o workflow estiver funcionando, vou:
+1. Atualizar esta página
+2. Criar uma nova release
+3. Anexar o APK automaticamente
+
+---
+
+## 📬 Contato
+
+Dúvidas ou problemas? Abra uma issue:
 
 https://github.com/jesusneresberg-ux/spotify-player-rn/issues/new
 
-Inclua:
-- Modelo do dispositivo
-- Versão do Android
-- Descrição do problema
-- Screenshots (se possível)
-
 ---
 
-## 🔄 Atualizações
-
-Para receber notificações de novas versões:
-
-1. ⭐ Star o repositório
-2. 👁️ Watch → Custom → Releases
-
-Você receberá um email quando houver nova release.
-
----
-
-## 📜 Licença
-
-MIT License - código aberto e gratuito para uso pessoal e comercial.
+**Última atualização:** 2026-11-01
